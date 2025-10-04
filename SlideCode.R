@@ -25,7 +25,7 @@ rm(x)             # Removes the object x from the workspace
 
 # --- Slide 25 — Load a CSV file into R using command line ---
 library(readr)
-starwars <- read_csv("starwars.csv")  # Replace with actual path
+starwars <- read_csv("data/starwars.csv")  # Replace with actual path
 
 view(starwars)
 
