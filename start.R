@@ -10,5 +10,16 @@ library(ggcorrplot)
 # Exercise 1 ----
 df <- mtcars
 rm(df)
-df <- read_csv("starwars.csv") |> mutate(index = seq(2023,2023,1))
+df <- read_csv("data/starwars.csv") |> mutate(index = seq(2023,2023,1))
+
+# Exercise 2 ----
+
+library(tidyverse)
+starwars <- read_csv("data/starwars.csv") |> 
+  select(name, height, eye_color, hair_color) |> 
+  select(-name, height) |>
+  select(ends_with("color"))
+
+  
+  
 
