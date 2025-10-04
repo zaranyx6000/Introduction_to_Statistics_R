@@ -3,24 +3,22 @@
 # install.packages("ggcorrplot")
 
 
-# Description: Load libraries ----
-library(tidyverse)
-library(ggcorrplot)
+# Ex. 1 -------------------------------------------------------------------
 
-# Exercise 1 ----
 df <- mtcars
+
 rm(df)
-df <- read_csv("data/starwars.csv") |> mutate(index = seq(2023,2023,1))
 
-# Exercise 2 ----
+library(readr)
 
-library(tidyverse)
-starwars <- read_csv("data/starwars.csv") |> 
-  select(name, height, eye_color, hair_color) |> 
-  select(-name, -height) |>
-  select(ends_with("color"))
+starwars <- read_csv("data/starwars.csv")
 
-# Exercise 2 from Nico ----  
+date_vec <- seq(from = as.Date("2023-01-01"), to = as.Date("2023-12-31"), by = "day")
+
+starwars <- starwars %>%   mutate(date = sample(date_vec, size = nrow(starwars), replace = TRUE))
+
+# Ex. 2 -------------------------------------------------------------------
+
 library(tidyverse)
 
 starwars <- read_csv("data/starwars.csv")
@@ -31,6 +29,43 @@ df <- select(starwars, -name, -height)
 
 df <- select(starwars, ends_with("color"))
 
+# Ex. 3 -------------------------------------------------------------------
 
+library(tidyverse)
+
+starwars <- read_csv("data/starwars.csv")
+
+df <- filter(starwars, weight > 50)
+
+df <- filter(starwars, weight > 50 & height >= 175)
+
+# Ex. 4 -------------------------------------------------------------------
+
+library(tidyverse)
+
+starwars <- read_csv("data/starwars.csv")
+
+df <- mutate(starwars, weight_g = weight*1000)
+
+# Ex. 5 -------------------------------------------------------------------
+
+library(tidyverse)
+
+starwars <- read_csv("data/starwars.csv")
+
+df <- starwars %>% 
+  select(name, height, eye_color, weight) %>% 
+  filter(eye_color == "blue") %>% 
+  mutate(weight_g = weight*1000)
+
+
+# Ex. 6 -------------------------------------------------------------------
+library(tidyverse)
+
+starwars <- read_csv("data/starwars.csv")
+
+ggplot(data = starwars,
+       mapping =aes(x = weight))+
+  geom_histogram(binwidth =5)
   
 
