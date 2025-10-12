@@ -135,3 +135,5 @@ plot_data %>%
   mutate(x = factor(x)) %>% 
   ggplot(mapping = aes(x = x)) +
   geom_bar()
+
+

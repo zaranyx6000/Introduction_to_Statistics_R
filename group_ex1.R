@@ -1,4 +1,6 @@
 library(tidyverse)
+library(zaranyx)
+
 stroke <- read.csv("data/stroke.csv") |> 
   drop_na()
 
@@ -11,6 +13,9 @@ stroke_hypertension_0 <- stroke |>
   select(-hypertension)
 
 
+
+
+
 sample_mean <-mean(stroke$avg_glucose_level)# sample mean
 sample_n <-length(stroke$avg_glucose_level)# sample size
 sample_sd <-sd(stroke$avg_glucose_level)# sample standard deviation
@@ -20,6 +25,10 @@ critical_value <-qnorm((1-confidence_level)/2, lower.tail =FALSE)# critical valu
 margin_error <-critical_value*sample_se # margin of error
 lower_bound <-sample_mean -margin_error # CI lower bound
 upper_bound <-sample_mean +margin_error # CI upper bound
+
+ci_mean(stroke$avg_glucose_level, 0.95,FALSE)
+
+
 
 sample_mean <-mean(stroke_hypertension_1$avg_glucose_level)# sample mean
 sample_n <-length(stroke_hypertension_1$avg_glucose_level)# sample size
